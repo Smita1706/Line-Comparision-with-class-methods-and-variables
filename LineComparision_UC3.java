@@ -3,11 +3,10 @@ package com.bridgelabz.LineComparision;
 import java.util.Scanner;
 
 public class LineComparision_UC3 {
-	static int x1, x2;
-	static int y1, y2;
-	static Double Length1, Length2;
+	int x1, x2;
+	int y1, y2;
 
-	public void getInput() {
+	public int getInput() {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter the first co-ordinate  : ");
 		x1 = s.nextInt();
@@ -17,25 +16,29 @@ public class LineComparision_UC3 {
 		x2 = s.nextInt();
 		System.out.println("Enter the second co-ordinate : ");
 		y2 = s.nextInt();
+		return 0;
 	}
-	
-	public double FindLength() {
+
+	public double findLength() {
 		return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
 	}
 
+	public int compareLength(Double length1, Double length2) {
+		return length1.compareTo(length2);
+	}
 	public static void main(String [] args){
-
+		Double length1, length2;
 		LineComparision_UC3 u = new LineComparision_UC3();
- 
-		u.getInput();
-		Length1 = u.FindLength();
-		u.getInput();
-		Length2 = u.FindLength();
 
-		System.out.println("Length of first two points : " + Length1);
-		System.out.println("Length of second two points : " + Length2);
+		u.getInput();
+		length1 = u.findLength();
+		u.getInput();
+		length2 = u.findLength();
 
-		int res = Length1.compareTo(Length2);
+		System.out.println("Length of first two points : " + length1);
+		System.out.println("Length of second two points : " + length2);
+
+		int res = u.compareLength(length1,length2);
 		System.out.println(res);
 
 		if (res > 0 )
